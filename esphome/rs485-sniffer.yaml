@@ -1,0 +1,43 @@
+# Passive RS485 sniffer for the Siemens PolyCool RWR470.10 bus.
+# MAX3485 DE + RE tied to GND: receive only, the ESP32 never drives the bus.
+# Every frame is logged as hex. Watch it with: esphome logs rs485-sniffer.yaml
+
+esphome:
+  name: rs485-sniffer
+  friendly_name: RS485 sniffer
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+
+logger:
+  level: DEBUG
+
+api:
+  encryption:
+    key: !secret api_encryption_key
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+uart:
+  id: rs485
+  rx_pin: GPIO16
+  tx_pin: GPIO17
+  baud_rate: 9600       # first guess; try 19200 if the frames look like noise
+  data_bits: 8
+  parity: NONE          # try EVEN if 9600 8N1 gives garbage
+  stop_bits: 1
+  debug:
+    direction: RX
+    dummy_receiver: true
+    after:
+      timeout: 10ms     # a gap of more than ~4 ms ends a Modbus RTU frame at 9600 baud
+    sequence:
+      - lambda: UARTDebug::log_hex(direction, bytes, ' ');
