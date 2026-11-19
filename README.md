@@ -17,7 +17,7 @@ The heat pump is controlled by a **Siemens PolyCool RWR470.10** PLC. Its RS485 p
 | ESP32 DevKit | ESPHome node |
 | MAX3485 TTL-to-RS485 module (3.3 V) | Bus interface for the ESP32 |
 | Waveshare industrial USB-to-RS485 adapter | Sniffing and testing from a PC |
-| Tuya 3-phase 80A energy meter (MTY2) | Real power and energy for the heat pump ([tuya-local #6241](https://github.com/make-all/tuya-local/issues/6241)) |
+| Tuya 4P 80A three-phase energy meter (MTY2) | Real power and energy for the heat pump, see [docs/energy-meter.md](docs/energy-meter.md) |
 
 ### Wiring (passive sniffing)
 
@@ -49,6 +49,7 @@ The heat pump is switched on and off from Home Assistant through a volt-free rel
 ## Status
 
 - [x] Energy meter set up in Home Assistant (Tuya Local, refresh every 10 s)
+- [ ] Energy meter mounted in the panel
 - [ ] Passive sniffing with ESP32 + MAX3485 (`esphome/rs485-sniffer.yaml`)
 - [ ] Identify baud rate, framing and protocol (Modbus RTU expected)
 - [ ] Map register addresses
@@ -58,5 +59,6 @@ The heat pump is switched on and off from Home Assistant through a volt-free rel
 ## Files
 
 - `esphome/rs485-sniffer.yaml` – receive-only ESPHome node that logs every frame on the bus as hex.
+- `docs/energy-meter.md` – the Tuya MTY2 energy meter: DP mapping, refresh automation, Energy dashboard.
 
 Findings will go in `docs/` as they turn up.
