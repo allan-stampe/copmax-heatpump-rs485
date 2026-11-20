@@ -16,3 +16,4 @@ fp-info-cache
 drc-report.json
 *.drc.json
 *.erc.json
+*.zip
