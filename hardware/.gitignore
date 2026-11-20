@@ -1,0 +1,9 @@
+# KiCad
+*-backups/
+*.lck
+_autosave-*
+*.kicad_prl
+fp-info-cache
+~*
+# OpenSCAD
+*.scad.bak
