@@ -7,3 +7,12 @@ fp-info-cache
 ~*
 # OpenSCAD
 *.scad.bak
+# KiCad local history
+.history/
+# Freerouting intermediates and generated reports
+*.dsn
+*.ses
+*.freerouting.log
+drc-report.json
+*.drc.json
+*.erc.json
