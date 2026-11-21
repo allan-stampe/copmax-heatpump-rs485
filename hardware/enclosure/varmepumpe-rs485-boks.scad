@@ -14,6 +14,12 @@ post_d = 7;                             // diameter paa hjoernesoejler
 komp_h = 14;                            // hoejde over print (klemmer, ESP32)
 bund_t = 2;  laag_t = 2;
 
+// SMA-boesning (bulkhead) til ESP32-WROOM-32UE's U.FL-pigtail, i endevaeggen ved x=0 (antenne-enden af modulet)
+sma_hul_d = 6.5;                        // gevind 1/4"-36 = 6.35 mm; 6.5 giver lidt luft
+sma_flad = 0;                           // >0 = D-hul: afstand fra centrum til flad side (fx 2.9 for 5.8 mm D-flade), 0 = rundt hul
+sma_y = 21;                             // print-y for hullets centrum (midt for ESP32-modulet)
+sma_z_over_print = 6.5;                 // hullets centrum over printets overside (moetrik 8 mm skal kunne drejes)
+
 ind_x = pcb_x + 2*luft + 2*pad;
 ind_y = pcb_y + 2*luft;
 ind_h = stand_h + pcb_t + komp_h;
@@ -63,6 +69,12 @@ module bund() {
     // Skrueklemmer paa y=54 kanten: J1 (x=50, 2-polet), J2 (x=32, 3-polet)
     translate([bx(50) - 7, ud_y - vaeg - luft - 1, z0]) cube([14, vaeg + luft + 2, 10]);
     translate([bx(32) - 10, ud_y - vaeg - luft - 1, z0]) cube([20, vaeg + luft + 2, 10]);
+    // SMA-boesning gennem endevaeggen ved x=0
+    translate([-1, by(sma_y), z0 + sma_z_over_print]) rotate([0, 90, 0])
+      difference() {
+        cylinder(d = sma_hul_d, h = vaeg + 2, $fn = 48);
+        if (sma_flad > 0) translate([-sma_hul_d, sma_flad, -1]) cube([2*sma_hul_d, sma_hul_d, vaeg + 4]);
+      }
   }
 }
 
