@@ -7,6 +7,9 @@
 		(legacy_teardrops no)
 	)
 	(paper "A4")
+	(title_block
+		(company "ASK-Service By Huset Gavnø")
+	)
 	(layers
 		(0 "F.Cu" signal)
 		(2 "B.Cu" signal)
@@ -11725,6 +11728,17 @@
 		)
 		(layer "Edge.Cuts")
 		(uuid "b98c9943-2107-4bb1-aeca-03a5df44e452")
+	)
+	(gr_text "ASK-Service By Huset Gavnø"
+		(at 64.5 27 90)
+		(layer "F.SilkS")
+		(uuid "2af2b294-7809-4ff2-b162-6cca5b88239c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
 	)
 	(segment
 		(start 49.1889 9.8514)
