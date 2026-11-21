@@ -11083,7 +11083,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "ESP32-WROOM-32E"
+		(property "Value" "ESP32-WROOM-32UE"
 			(at 135.89 110.49 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11094,7 +11094,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "RF_Module:ESP32-WROOM-32E"
+		(property "Footprint" "RF_Module:ESP32-WROOM-32UE"
 			(at 134.62 144.78 0)
 			(hide yes)
 			(show_name no)
@@ -11116,7 +11116,7 @@
 				)
 			)
 		)
-		(property "Description" "RF Module, ESP32-D0WD-V3 SoC, without PSRAM, Wi-Fi 802.11b/g/n, Bluetooth, BLE, 32-bit, 2.7-3.6V, onboard antenna, SMD"
+		(property "Description" "RF Module, ESP32-D0WD-V3 SoC, without PSRAM, Wi-Fi 802.11b/g/n, Bluetooth, BLE, 32-bit, 2.7-3.6V, external antenna (U.FL/IPEX connector), SMD"
 			(at 134.62 144.78 0)
 			(hide yes)
 			(show_name no)
